@@ -1,0 +1,91 @@
+package com.javeriana.calculator;
+
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import com.javeriana.util.utilidades;
+
+//import com.javeriana.util.utilidades;
+
+@Path("/calculator")
+@Produces(MediaType.APPLICATION_JSON)
+
+public class Calculadora {
+
+	@GET()
+	@Path("/add/" + utilidades.PATH_MULTIPARAMETRO)
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Double sumar(@PathParam(utilidades.PATH_PARAM_MULTIPARAMETRO) String URL) {
+		utilidades util = new utilidades();
+		List<Double> operadores = util.leerParametros(URL);
+		
+		Double valorTotal = 0.0;
+		
+		for (Double op : operadores) {
+			valorTotal += op;
+		}
+		return valorTotal;
+	}
+	
+	@GET()
+	@Path("/subs/" + utilidades.PATH_MULTIPARAMETRO)
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Double restar(@PathParam(utilidades.PATH_PARAM_MULTIPARAMETRO) String URL) {
+		utilidades util = new utilidades();
+		List<Double> operadores = util.leerParametros(URL);
+		
+		Double valorTotal = operadores.get(0).doubleValue();
+		
+		int i=0;
+		for (Double op : operadores) {
+			if ( i != 0){
+				valorTotal -= op;
+			}
+			i++;
+		}
+		return valorTotal;
+	}
+	
+	@GET()
+	@Path("/mult/" + utilidades.PATH_MULTIPARAMETRO)
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Double multiplicar(@PathParam(utilidades.PATH_PARAM_MULTIPARAMETRO) String URL) {
+		utilidades util = new utilidades();
+		List<Double> operadores = util.leerParametros(URL);
+		
+		Double valorTotal = 1.0;
+		
+		for (Double op : operadores) {
+			valorTotal *= op;
+		}
+		return valorTotal;
+	}
+	
+	@GET()
+	@Path("/div/" + utilidades.PATH_MULTIPARAMETRO)
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Double dividir(@PathParam(utilidades.PATH_PARAM_MULTIPARAMETRO) String URL) {
+		utilidades util = new utilidades();
+		List<Double> operadores = util.leerParametros(URL);
+		
+		Double valorTotal = operadores.get(0).doubleValue();
+		int i=0;
+		for (Double op : operadores) {
+			if ( i != 0){
+				valorTotal /= op;
+			}
+			i++;
+		}
+		return valorTotal;
+	}
+	
+}
