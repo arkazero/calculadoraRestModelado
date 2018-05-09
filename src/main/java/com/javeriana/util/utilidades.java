@@ -13,7 +13,7 @@ public class utilidades {
 	
 	public List<Double> leerParametros(String parametrosURL){
 		List<Double> operadores = new ArrayList<Double>();
-
+		//parametrosURL = parametrosURL.replace("%2F", "/");
 		String [] parametros = parametrosURL.split("/");
 		for (String op : parametros) {
             if(!"".equals(op)){
