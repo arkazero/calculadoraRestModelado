@@ -1,0 +1,110 @@
+swagger: '2.0'
+info:
+  description: Taller de Swagger
+  version: 1.0.0
+  title: Swagger Petstore
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'localhost:8080'
+basePath: /api/v1
+tags:
+  - name: Calculadora Rest
+schemes:
+  - http
+paths:
+  '/calculator/add/{parametros}':
+    get:
+      tags:
+        - Calculadora Rest
+      summary: Operacion Sumar
+      description: Retorna el resultado de la suma de los numeros recibidos por parametro
+      operationId: sumar
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: parametros
+          in: path
+          required: true
+          type: string
+          pattern: '(/?(-?[0-9]+))*'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: number
+            format: double
+  '/calculator/div/{parametros}':
+    get:
+      tags:
+        - Calculadora Rest
+      summary: Operacion Division
+      description: Retorna el resultado de la division de los numeros recibidos por parametro
+      operationId: dividir
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: parametros
+          in: path
+          required: true
+          type: string
+          pattern: '(/?(-?[0-9]+))*'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: number
+            format: double
+  '/calculator/mult/{parametros}':
+    get:
+      tags:
+        - Calculadora Rest
+      summary: Operacion Multiplicar
+      description: Retorna el resultado de la multiplicacion de los numeros recibidos por parametro
+      operationId: multiplicar
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: parametros
+          in: path
+          required: true
+          type: string
+          pattern: '(/?(-?[0-9]+))*'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: number
+            format: double
+  '/calculator/subs/{parametros}':
+    get:
+      tags:
+        - Calculadora Rest
+      summary: Operacion Restar
+      description: Retorna el resultado de la resta de los numeros recibidos por parametro
+      operationId: restar
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: parametros
+          in: path
+          required: true
+          type: string
+          pattern: '(/?(-?[0-9]+))*'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: number
+            format: double
